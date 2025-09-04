@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour
             Vector3 direction = (playerTarget.position - transform.position).normalized;
 
             // Move the enemy towards the player 
-            transform.Translate(direction * moveSpeed * Time.deltaTime);
+            transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
 
             // Optional: Make the enemy face the player 
             transform.LookAt(playerTarget);
