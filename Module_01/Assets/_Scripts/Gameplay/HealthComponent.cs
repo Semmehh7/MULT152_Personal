@@ -5,6 +5,7 @@ public class HealthComponent : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int startHealth = 100;
+    [SerializeField] private HealthConfig config; //drag an SO asset here
 
     public int Current { get; private set; }
 
@@ -16,7 +17,12 @@ public class HealthComponent : MonoBehaviour
 
     private void Awake()
     {
-        Current = Mathf.Clamp(startHealth, 0, maxHealth);
+        int max = config != null ? config.maxHealth : maxHealth;
+        int start = config != null ? config.startHealth : startHealth;
+
+        // Keep serialized fallbacks for demo, but prefer SO if assigned
+        maxHealth = max;
+        Current = Mathf.Clamp(start, 0, maxHealth);
         RaiseChanged();
     }
 
