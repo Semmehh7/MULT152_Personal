@@ -3,7 +3,7 @@ using UnityEngine;
 public class HealthFeedback : MonoBehaviour
 {
     [SerializeField] private HealthComponent target;
-    [SerializeField] private AudioSource hitSfx;
+    [SerializeField] public AudioSource hitSfx;
     [SerializeField] private GameObject deathFx;
 
     private void OnEnable()
@@ -19,6 +19,7 @@ public class HealthFeedback : MonoBehaviour
         target.OnDamaged -= HandleDamaged;
         target.OnDied -= HandleDied;
     }
+
 
     private void HandleDamaged(int amt)
     {
