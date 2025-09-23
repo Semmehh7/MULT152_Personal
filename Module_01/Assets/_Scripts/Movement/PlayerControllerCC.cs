@@ -57,8 +57,8 @@ public class PlayerControllerCC : MonoBehaviour
         else if (!wantsCrouch && isCrouching) TryStand();
 
         float targetSpeed = isCrouching ? crouchSpeed : walkSpeed;
-
         bool canSprint = !isCrouching && stamina > 0.15f && Time.time - lastSprintReleaseTime > sprintCooldown;
+        
         if (sprintHeld && canSprint && (Mathf.Abs(x) + Mathf.Abs(z) > 0.1f))
         {
             targetSpeed = runSpeed;
@@ -101,7 +101,7 @@ public class PlayerControllerCC : MonoBehaviour
     {
         // safety: don't stand up into a ceiling
         float check = standingHeight - cc.height;
-        if (check <= 0.01f) { isCrouching = false; SetHeight(standingHeight); return; }
+        if (check >= 0.01f) { isCrouching = false; SetHeight(standingHeight); return; }
 
         Vector3 top = transform.position + Vector3.up * (cc.height * 0.5f);
         float radius = cc.radius * 0.95f;
@@ -116,7 +116,7 @@ public class PlayerControllerCC : MonoBehaviour
     {
         float centerAdjust = (h - cc.height) * 0.5f;
         cc.height = h;
-        cc.center = new Vector3(cc.center.x, cc.center.y + centerAdjust, cc.center.z);
+        cc.center = new Vector3(cc.center.x, cc.center.y - centerAdjust, cc.center.z);
     }
 
     // Push lightweight rigidbodies without losing CC precision
