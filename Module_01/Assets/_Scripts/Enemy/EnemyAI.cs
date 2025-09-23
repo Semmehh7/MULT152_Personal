@@ -1,3 +1,4 @@
+using System.Collections.Specialized;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -17,6 +18,10 @@ public class EnemyAI : MonoBehaviour
 
             // Optional: Make the enemy face the player 
             transform.LookAt(playerTarget);
+        }
+        else
+        {
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, Space.World);
         }
     }
 }

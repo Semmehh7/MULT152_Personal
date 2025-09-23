@@ -5,9 +5,6 @@ public class Bullet : MonoBehaviour
     public float speed = 20f;
     public float lifeTime = 3f;
 
-    [SerializeField] private HealthComponent target;
-    [SerializeField] private int damageAmount = 10;
-
     void Start()
     {
         Destroy(gameObject, lifeTime); // cleanup
@@ -21,6 +18,12 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // Example: deal damage if enemy has EnemyHealth
-        target?.Damage(damageAmount);
+        var enemy = other.GetComponent<EnemyHealth>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(10f);
+        }
+
+        Destroy(gameObject);
     }
 }

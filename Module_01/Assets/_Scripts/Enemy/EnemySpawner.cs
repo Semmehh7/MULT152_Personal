@@ -13,7 +13,6 @@ public class EnemySpawner : MonoBehaviour
     [Header("Wave Settings")]
     [Min(1)] public int spawnAmount = 5;       // how many per wave (Inspector-exposed, as requested) 
     [Min(0f)] public float spawnInterval = 0.5f;
-
     [Tooltip("Max number of enemies alive at once. New spawns wait until below this.")]
     [Min(1)] public int maxAlive = 10;
 
@@ -30,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     [ContextMenu("Start Wave")]
+
     public void StartWave()
     {
         if (enemyPrefab == null)
@@ -37,6 +37,7 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogError("[EnemySpawner] Missing enemyPrefab.", this);
             return;
         }
+
         if (spawnRoutine == null)
             spawnRoutine = StartCoroutine(SpawnWave());
     }
@@ -49,11 +50,15 @@ public class EnemySpawner : MonoBehaviour
             while (aliveCount >= maxAlive)
                 yield return null;
 
+
+
             SpawnOne();
             if (spawnInterval > 0f)
                 yield return new WaitForSeconds(spawnInterval);
         }
+
         spawnRoutine = null;
+
     }
 
     private void SpawnOne()
@@ -67,6 +72,7 @@ public class EnemySpawner : MonoBehaviour
         if (hc != null)
         {
             aliveCount++;
+
             void OnDiedHandler()
             {
                 aliveCount = Mathf.Max(0, aliveCount - 1);
