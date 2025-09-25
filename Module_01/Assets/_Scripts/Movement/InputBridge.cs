@@ -22,13 +22,13 @@ public class InputBridge : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext ctx)
     {
-        // Read raw and scale—mouse delta is already frame-scaled by the system
+        // Read raw and scale-mouse delta is already frame-scaled by the system
         Look = ctx.ReadValue<Vector2>() * lookSensitivity;
     }
 
     public void OnSprint(InputAction.CallbackContext ctx)
     {
-        // Buttons: started/performed/canceled—treat performed as held
+        // Buttons: started/performed/canceled-treat performed as held
         if (ctx.performed) sprintHeld = true;
         if (ctx.canceled) sprintHeld = false;
     }

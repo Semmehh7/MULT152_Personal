@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControllerCC : MonoBehaviour
 {
+    [Header("InputBridge")]
+    [SerializeField] private InputBridge input;
+    
     [Header("Move Speeds")]
     public float walkSpeed = 3.5f;
     public float runSpeed = 6.0f;
@@ -46,10 +50,18 @@ public class PlayerControllerCC : MonoBehaviour
     void Update()
     {
         // ---- INPUT (OLD system) ----
-        float x = Input.GetAxisRaw("Horizontal"); // A/D or left/right
+        /*float x = Input.GetAxisRaw("Horizontal"); // A/D or left/right
         float z = Input.GetAxisRaw("Vertical");   // W/S or up/down
         bool sprintHeld = Input.GetKey(KeyCode.LeftShift);
-        bool crouchHeld = Input.GetKey(KeyCode.LeftControl);
+        bool crouchHeld = Input.GetKey(KeyCode.LeftControl);*/
+
+        Vector2 move = input ? input.Move : Vector2.zero;
+        bool sprintHeld = input && input.sprintHeld;
+        bool crouchHeld = input && input.crouchHeld ? true : isCrouching;
+
+        //Replace x/z
+        float x = move.x;
+        float z = move.y;
 
         // desired speed
         bool wantsCrouch = crouchHeld;
