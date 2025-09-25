@@ -28,7 +28,9 @@ public class EnemyWaveSpawner : MonoBehaviour
     int aliveCount = 0;
     int spawnedThisWave = 0;
     int targetThisWave = 0;
-    bool spawning = false;
+    
+     [Header("Spawn")]
+    public bool spawning = false;
 
     Coroutine waveRoutine;
 
