@@ -57,7 +57,7 @@ public class PlayerControllerCC : MonoBehaviour
 
         Vector2 move = input ? input.Move : Vector2.zero;
         bool sprintHeld = input && input.sprintHeld;
-        bool crouchHeld = input && input.crouchHeld ? true : isCrouching;
+        bool crouchHeld = input && input.crouchHeld;
 
         //Replace x/z
         float x = move.x;
