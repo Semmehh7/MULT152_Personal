@@ -31,6 +31,9 @@ public class PlayerControllerCC : MonoBehaviour
     public float staminaRegenPerSec = 1.0f;
     public float sprintCooldown = 0.25f;
 
+    [Header("Jump")]
+    public float jumpForce = 8f;
+
     CharacterController cc;
     Vector3 velocity;            // world-space velocity we apply via cc.Move
     Vector3 planarVelCurrent;    // current horizontal velocity (x,z)
@@ -58,6 +61,9 @@ public class PlayerControllerCC : MonoBehaviour
         Vector2 move = input ? input.Move : Vector2.zero;
         bool sprintHeld = input && input.sprintHeld;
         bool crouchHeld = input && input.crouchHeld;
+
+        //Jump Input
+        bool jumpPressed = input && input.jumpPressed;
 
         //Replace x/z
         float x = move.x;
@@ -93,8 +99,19 @@ public class PlayerControllerCC : MonoBehaviour
 
         // gravity + grounding
         bool grounded = cc.isGrounded;
-        if (grounded && yVel < 0f) yVel = groundedStick; // small downward bias to stay grounded
-        yVel += gravity * Time.deltaTime;
+        if (grounded)
+        {
+            if (jumpPressed)
+            {
+                yVel += jumpForce;
+                Debug.Log("Player Jumped");
+            }
+            else if (yVel < 0f)
+            {
+                yVel = groundedStick;
+                Debug.Log("Player Grounded");
+            }
+        }
 
         // compose final velocity
         velocity = new Vector3(planarVelCurrent.x, yVel, planarVelCurrent.z);
