@@ -45,6 +45,7 @@ public class PatrolChaseAI : MonoBehaviour
                 if (player && dist <= chaseDistance && hasLOS)
                 {
                     state = State.Chase;
+                    Debug.Log("State changed to CHASE");
                     agent.ResetPath();
                 }
                 break;

@@ -44,12 +44,13 @@ public class InputBridge : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed) { jumpPressed = true; } // pressed this frame
-        if (ctx.canceled) { jumpPressed = false; }
+        // Fire on press only
+        if (ctx.started) jumpPressed = true;
     }
-    /*void LateUpdate()
+
+    void LateUpdate()
     {
-        // Reset edge-trigger flags after consumers had a chance to read them
-        CrouchPressed = false;
-    }*/
+        // auto-clear so it's edge-triggered
+        jumpPressed = false;
+    }
 }
