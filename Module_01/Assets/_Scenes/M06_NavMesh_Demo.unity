@@ -161,7 +161,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 13
   m_ObstacleAvoidanceType: 4
 --- !u!136 &68272043
 CapsuleCollider:
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.11666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: a878bd2847c799f43b3eca652699ff8e, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 149f194e1e2927140aa68d7f4d0d3917, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &85687628
 Transform:
