@@ -45,6 +45,7 @@ public class PatrolChaseAI : MonoBehaviour
                 if (player && dist <= chaseDistance && hasLOS)
                 {
                     state = State.Chase;
+                    Debug.Log("State changed to CHASE");
                     agent.ResetPath();
                 }
                 break;
@@ -58,6 +59,7 @@ public class PatrolChaseAI : MonoBehaviour
                 if (dist >= loseDistance || !hasLOS)
                 {
                     state = State.Patrol;
+                    Debug.Log("State changed to PATROL");
                     agent.ResetPath();
                     if (points != null && points.Length > 0)
                         SafeSetDestination(points[index].position);
@@ -97,7 +99,9 @@ public class PatrolChaseAI : MonoBehaviour
         if (!agent.isOnNavMesh)
         {
             if (NavMesh.SamplePosition(transform.position, out var selfHit, sampleRange, NavMesh.AllAreas))
+            {
                 agent.Warp(selfHit.position);
+            } 
             else return; // can't recover
         }
 
@@ -105,7 +109,9 @@ public class PatrolChaseAI : MonoBehaviour
         {
             var path = new NavMeshPath();
             if (agent.CalculatePath(navHit.position, path) && path.status == NavMeshPathStatus.PathComplete)
-                agent.SetDestination(navHit.position);
+            {
+                agent.SetDestination(navHit.position);     
+            }
         }
     }
 }

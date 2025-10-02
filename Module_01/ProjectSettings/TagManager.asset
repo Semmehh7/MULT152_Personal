@@ -14,10 +14,17 @@ TagManager:
   - 
   - Water
   - UI
+<<<<<<< HEAD
   - Gound
   - Wall
   - Mud
   - 
+=======
+  - Ground
+  - Wall
+  - Mud
+  - Player
+>>>>>>> 28c00405fbccde10b910b8046b38fae350151e9f
   - 
   - 
   - 
