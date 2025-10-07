@@ -6,12 +6,30 @@ using TMPro;
 
 public class HealthUI : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
     [SerializeField] private HealthComponent target;
     [SerializeField] private Slider bar;
+
+    [Header("TEXT Fields")]
     [SerializeField] private UnityEngine.UI.Text legacyLabel;
+    [SerializeField] private UnityEngine.UI.Text playerLabel;
 #if TMP_PRESENT
     [SerializeField] private TextMeshProUGUI tmpLabel;
 #endif
+
+    void Start()
+    {
+        if (!player)
+        {
+            player = GetComponentInParent<CharacterController>()?.gameObject;
+        }
+
+        if (player && playerLabel)
+            {
+                playerLabel.text = player.name;
+                Debug.Log($"[HealthUI] Player name set to: {player.name}");
+            }
+    }
 
     private void OnEnable()
     {
