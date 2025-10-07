@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI; // for Slider
-#if TMP_PRESENT
 using TMPro;
-#endif
 
 public class HealthUI : MonoBehaviour
 {
@@ -13,9 +11,7 @@ public class HealthUI : MonoBehaviour
     [Header("TEXT Fields")]
     [SerializeField] private UnityEngine.UI.Text legacyLabel;
     [SerializeField] private UnityEngine.UI.Text playerLabel;
-#if TMP_PRESENT
     [SerializeField] private TextMeshProUGUI tmpLabel;
-#endif
 
     void Start()
     {
@@ -47,8 +43,7 @@ public class HealthUI : MonoBehaviour
     {
         if (bar != null) { bar.minValue = 0; bar.maxValue = max; bar.value = current; }
         if (legacyLabel != null) legacyLabel.text = $"{current}/{max}";
-#if TMP_PRESENT
+
         if (tmpLabel != null) tmpLabel.text = $"{current}/{max}";
-#endif
     }
 }
