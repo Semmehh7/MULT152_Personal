@@ -20,7 +20,7 @@ public class AmmoUI : MonoBehaviour
     
     void Refresh()
     {
-        string t = $"{current}/{mag} ({reserves})";
+        string t = $"AMMO: {current}/{mag} ({reserves})";
         if (legacyLabel) legacyLabel.text = t;
         if (tmpLabel) tmpLabel.text = t;
     }
