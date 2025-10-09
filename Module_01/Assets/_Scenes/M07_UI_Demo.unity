@@ -1447,6 +1447,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7119266807885265727, guid: bcf3c99e1dab2e74aa0c89a098657ab0, type: 3}
+      propertyPath: hud
+      value: 
+      objectReference: {fileID: 1804310169}
+    - target: {fileID: 7119266807885265727, guid: bcf3c99e1dab2e74aa0c89a098657ab0, type: 3}
       propertyPath: config
       value: 
       objectReference: {fileID: 0}
@@ -1764,6 +1768,7 @@ GameObject:
   - component: {fileID: 1804310166}
   - component: {fileID: 1804310167}
   - component: {fileID: 1804310168}
+  - component: {fileID: 1804310169}
   m_Layer: 5
   m_Name: Player_Canvas
   m_TagString: Untagged
@@ -1904,6 +1909,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmmoSim
   ui: {fileID: 1804310167}
   input: {fileID: 1562921857}
+  hud: {fileID: 1804310169}
+--- !u!114 &1804310169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804310161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c59bbb0db6bc940b67401d53972dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UITK_HUD
+  doc: {fileID: 1937859083}
 --- !u!1 &1859348410
 GameObject:
   m_ObjectHideFlags: 0
